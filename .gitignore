@@ -2,6 +2,6 @@ venv/
 # Python virtual environment
 __pycache__/
 *.pycy
-
+data
 .idea/
 
