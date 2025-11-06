@@ -1,1 +1,9 @@
 venv/
+# Python virtual environment
+__pycache__/
+*.pyc
+
+# IDE / Editor settings
+.vscode/
+.idea/
+
