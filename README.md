@@ -111,7 +111,7 @@ All files include standardized columns for:
 | F-statistic | 7.83 |
 | p-value | 0.0012 |
 
-✅ **Interpretation:** Since *p < 0.05*, the GHI differences among Benin, Togo, and Sierra Leone are **statistically significant**.  
+ **Interpretation:** Since *p < 0.05*, the GHI differences among Benin, Togo, and Sierra Leone are **statistically significant**.  
 This means solar potential varies meaningfully by country rather than by random chance.
 
 ---
@@ -126,7 +126,7 @@ This means solar potential varies meaningfully by country rather than by random 
 
 ---
 
-## 🌞 Key Insights
+## Key Insights
 
 - **Benin** consistently shows the **highest GHI and DNI**, making it the top solar energy candidate.  
 - **Togo** demonstrates **moderate but reliable** irradiance values suitable for photovoltaic (PV) systems.  
@@ -135,14 +135,14 @@ This means solar potential varies meaningfully by country rather than by random 
 
 ---
 
-## 🧭 Conclusion
+##  Conclusion
 
 The cross-country comparison clearly identifies **Benin** as the most promising location for solar energy investments, followed by **Togo**, with **Sierra Leone** showing lesser potential.  
 These results can guide **policy decisions**, **infrastructure planning**, and **resource allocation** in renewable energy projects.
 
 ---
 
-## 📦 Requirements
+## Requirements
 
 Install dependencies via:
 
@@ -156,7 +156,7 @@ matplotlib, seaborn — visualizations
 
 scipy — statistical testing
 
-🚀 How to Run
+How to Run
 Open the notebook:
 
 bash
