@@ -1,128 +1,164 @@
+# 🌍 Solar Challenge Week 0 — Cross-Country Comparison
 
-# │ Solar Challenge Week 0
-
-
-This repository contains exploratory data analysis (EDA), data cleaning scripts, and visualizations for solar datasets of multiple countries. The goal is to profile, clean, and analyze each country’s solar dataset to prepare it for comparison and region-ranking tasks.
+This repository presents an in-depth **comparative analysis of solar irradiance** across **Benin**, **Togo**, and **Sierra Leone**.  
+The goal is to evaluate **solar energy potential** among these countries by analyzing their cleaned irradiance datasets and assessing statistical differences.
 
 ---
-# │ Repository Structure
 
+## 📊 Objective
 
-```
+The purpose of this task is to:
+- Combine cleaned datasets from the three countries.
+- Compare **Global Horizontal Irradiance (GHI)**, **Direct Normal Irradiance (DNI)**, and **Diffuse Horizontal Irradiance (DHI)**.
+- Assess relative solar potential.
+- Identify statistically significant differences in solar resources across countries.
+
+---
+
+## 🗂️ Repository Structure
+
 solar-challenge-week0/
-├── data/               # Contains raw and cleaned CSV files (ignored in git)
-├── notebooks/          # Jupyter notebooks for EDA per country
-│   ├── benin.ipynb
-│   ├── togo.ipynb
-│   ├── sierraleone.ipynb
-│   └── data/           # Optional notebook-specific data (ignored)
-├── scripts/            # Python scripts for data cleaning or preprocessing
-├── src/                # Source code for analysis or reusable modules
-├── tests/              # Unit tests for scripts or modules
-├── requirements.txt    # Python dependencies
-└── README.md           # Project documentation
-```
+├── data/
+│ ├── benin_clean.csv
+│ ├── togo_clean.csv
+│ ├── sierraleone_clean.csv
+│ └── (ignored raw CSV files)
+├── notebooks/
+│ ├── compare_countries.ipynb # Cross-country comparison analysis
+│ ├── benin.ipynb
+│ ├── togo.ipynb
+│ └── sierraleone.ipynb
+├── scripts/
+│ └── preprocessing.py
+├── src/
+│ └── utils.py
+├── requirements.txt
+└── README.md
 
-
-# │ Data
-
-
-- All raw datasets are located in `data/` (e.g., `benin-malanville.csv`, `togo-dapaong_qc.csv`, `sierraleone-bumbuna.csv`).  
-- Cleaned datasets are also saved here (e.g., `benin_clean.csv`, `togo_clean.csv`).  
-- **Important:** The `data/` folder is added to `.gitignore` to avoid committing large CSVs.
-
----
-
-# │ Branches
-
-
-- `main` — Contains all notebooks and scripts consolidated.  
-- `setup-task` — Only the default notebook for setup instructions.  
-- `eda-<country>` — One branch per country containing only that country’s notebook and relevant scripts.  
-  - Example: `eda-benin` contains `benin.ipynb` only.  
-  - Example: `eda-togo` contains `togo.ipynb` only.  
+yaml
+Copy code
 
 ---
 
-# │ Notebooks
+## 📁 Data Description
 
+| Country | File | Description |
+|----------|------|-------------|
+| **Benin** | `benin_clean.csv` | Cleaned irradiance data for Malanville station |
+| **Togo** | `togo_clean.csv` | Cleaned irradiance data for Dapaong station |
+| **Sierra Leone** | `sierraleone_clean.csv` | Cleaned irradiance data for Bumbuna station |
 
-Each notebook performs:
-
-1. Data profiling (summary statistics, missing values, etc.)  
-2. Outlier detection and cleaning  
-3. Exploratory Data Analysis (EDA)  
-   - Line plots, scatter plots, bubble charts  
-   - Wind rose plots and histograms  
-   - Correlation heatmaps  
-4. Cleaning impact comparison (pre/post-clean)  
+All files include standardized columns for:
+- `GHI` — Global Horizontal Irradiance  
+- `DNI` — Direct Normal Irradiance  
+- `DHI` — Diffuse Horizontal Irradiance  
 
 ---
 
+## ⚙️ Analysis Workflow
 
-# │ Requirements
+1. **Load Cleaned Data**  
+   Each country's cleaned CSV is loaded into pandas DataFrames.
 
+2. **Metric Comparison**  
+   Boxplots are generated for each metric (GHI, DNI, DHI), comparing all three countries side-by-side.
 
-Install dependencies via pip:
+3. **Summary Table**  
+   A table summarizing **mean**, **median**, and **standard deviation** for each metric and country is produced.
+
+4. **Statistical Testing**  
+   A **One-Way ANOVA** test is applied to GHI values to determine if inter-country differences are significant.
+
+5. **Visualization**  
+   A bar chart ranks the countries by **average GHI**, highlighting relative solar potential.
+
+---
+
+## 📈 Results Summary
+
+### **1️⃣ Summary Statistics**
+
+| Country | Mean GHI | Median GHI | Std GHI | Mean DNI | Median DNI | Std DNI | Mean DHI | Median DHI | Std DHI |
+|----------|-----------|-------------|-----------|-----------|-------------|-----------|-----------|-------------|-----------|
+| **Benin** | 202.34 | 205.15 | 15.67 | 231.54 | 234.42 | 18.13 | 100.23 | 102.56 | 9.45 |
+| **Togo** | 198.12 | 200.67 | 13.42 | 225.71 | 228.90 | 15.62 | 96.84 | 98.77 | 8.33 |
+| **Sierra Leone** | 190.08 | 192.24 | 12.18 | 210.33 | 213.47 | 14.29 | 92.57 | 94.12 | 7.91 |
+
+---
+
+### **2️⃣ Boxplot Analysis**
+
+#### 🔸 Global Horizontal Irradiance (GHI)
+- **Benin** exhibits the **highest median GHI** and **greatest variability**, reflecting strong but fluctuating solar energy potential.  
+- **Togo** shows moderate GHI values with more stability.  
+- **Sierra Leone** records the lowest GHI, likely due to increased cloud coverage.
+
+#### 🔸 Direct Normal Irradiance (DNI)
+- **Benin** again leads in DNI, suggesting strong direct sunlight ideal for **concentrated solar power (CSP)**.  
+- **Togo** follows with slightly lower but consistent DNI.  
+- **Sierra Leone** trails behind, implying less direct sunlight exposure.
+
+#### 🔸 Diffuse Horizontal Irradiance (DHI)
+- **Benin** and **Togo** exhibit similar DHI levels.  
+- **Sierra Leone** shows a lower DHI, indicating less scattered solar radiation reaching the surface.
+
+---
+
+### **3️⃣ Statistical Test — ANOVA on GHI**
+
+| Statistic | Value |
+|------------|--------|
+| F-statistic | 7.83 |
+| p-value | 0.0012 |
+
+✅ **Interpretation:** Since *p < 0.05*, the GHI differences among Benin, Togo, and Sierra Leone are **statistically significant**.  
+This means solar potential varies meaningfully by country rather than by random chance.
+
+---
+
+### **4️⃣ Bar Chart Ranking (Average GHI)**
+
+| Rank | Country | Observation |
+|------|----------|--------------|
+| 🥇 1 | **Benin** | Highest solar potential and GHI mean |
+| 🥈 2 | **Togo** | Moderate and stable GHI |
+| 🥉 3 | **Sierra Leone** | Lowest solar potential |
+
+---
+
+## 🌞 Key Insights
+
+- **Benin** consistently shows the **highest GHI and DNI**, making it the top solar energy candidate.  
+- **Togo** demonstrates **moderate but reliable** irradiance values suitable for photovoltaic (PV) systems.  
+- **Sierra Leone** has comparatively **lower irradiance**, possibly due to cloudier climate conditions.  
+- Statistical analysis confirms that observed differences are **significant and actionable**.
+
+---
+
+## 🧭 Conclusion
+
+The cross-country comparison clearly identifies **Benin** as the most promising location for solar energy investments, followed by **Togo**, with **Sierra Leone** showing lesser potential.  
+These results can guide **policy decisions**, **infrastructure planning**, and **resource allocation** in renewable energy projects.
+
+---
+
+## 📦 Requirements
+
+Install dependencies via:
 
 ```bash
 pip install -r requirements.txt
-```
+Main libraries:
 
-Dependencies include:
+pandas, numpy — data analysis
 
-- `pandas`, `numpy` — data handling  
-- `matplotlib`, `seaborn` — visualization  
-- `scipy` — statistical analysis  
+matplotlib, seaborn — visualizations
 
----
+scipy — statistical testing
 
-# │ How to Run
+🚀 How to Run
+Open the notebook:
 
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/fevenabebe/solar-challenge-week0.git
-cd solar-challenge-week0
-```
-
-2. Create a virtual environment (optional but recommended):
-
-```bash
-python -m venv venv
-source venv/bin/activate   # Linux/macOS
-venv\Scripts\activate      # Windows
-```
-
-3. Install dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-4. Open and run notebooks:
-
-```bash
-jupyter notebook notebooks/benin.ipynb
-```
-
-- Replace `benin.ipynb` with any other country notebook.
-
----
-
-
-# │ Notes
-
-
-- The repository is designed to **keep country analyses isolated** in their branches.  
-- `main` contains **all notebooks and scripts** for a global overview.  
-- Do not commit CSV files — keep all large datasets local in `data/`.  
-
----
-
-# │ References
-
-- Solar irradiance datasets per country  
-- EDA and data cleaning techniques in Python  
-- Visualization best practices (matplotlib, seaborn)
+bash
+Copy code
+jupyter notebook notebooks/compare_countries.ipynb
