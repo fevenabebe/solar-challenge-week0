@@ -1,11 +1,11 @@
-# 🌍 Solar Challenge Week 0 — Cross-Country Comparison
+# Solar Challenge Week 0 — Cross-Country Comparison
 
 This repository presents an in-depth **comparative analysis of solar irradiance** across **Benin**, **Togo**, and **Sierra Leone**.  
 The goal is to evaluate **solar energy potential** among these countries by analyzing their cleaned irradiance datasets and assessing statistical differences.
 
 ---
 
-## 📊 Objective
+## Objective
 
 The purpose of this task is to:
 - Combine cleaned datasets from the three countries.
@@ -15,7 +15,7 @@ The purpose of this task is to:
 
 ---
 
-## 🗂️ Repository Structure
+## Repository Structure
 
 solar-challenge-week0/
 ├── data/
@@ -40,7 +40,7 @@ Copy code
 
 ---
 
-## 📁 Data Description
+## Data Description
 
 | Country | File | Description |
 |----------|------|-------------|
@@ -55,7 +55,7 @@ All files include standardized columns for:
 
 ---
 
-## ⚙️ Analysis Workflow
+## Analysis Workflow
 
 1. **Load Cleaned Data**  
    Each country's cleaned CSV is loaded into pandas DataFrames.
@@ -74,9 +74,9 @@ All files include standardized columns for:
 
 ---
 
-## 📈 Results Summary
+##  Results Summary
 
-### **1️⃣ Summary Statistics**
+### **1️Summary Statistics**
 
 | Country | Mean GHI | Median GHI | Std GHI | Mean DNI | Median DNI | Std DNI | Mean DHI | Median DHI | Std DHI |
 |----------|-----------|-------------|-----------|-----------|-------------|-----------|-----------|-------------|-----------|
@@ -86,7 +86,7 @@ All files include standardized columns for:
 
 ---
 
-### **2️⃣ Boxplot Analysis**
+### **Boxplot Analysis**
 
 #### 🔸 Global Horizontal Irradiance (GHI)
 - **Benin** exhibits the **highest median GHI** and **greatest variability**, reflecting strong but fluctuating solar energy potential.  
@@ -104,7 +104,7 @@ All files include standardized columns for:
 
 ---
 
-### **3️⃣ Statistical Test — ANOVA on GHI**
+### ** Statistical Test — ANOVA on GHI**
 
 | Statistic | Value |
 |------------|--------|
@@ -116,7 +116,7 @@ This means solar potential varies meaningfully by country rather than by random 
 
 ---
 
-### **4️⃣ Bar Chart Ranking (Average GHI)**
+### **4️ Bar Chart Ranking (Average GHI)**
 
 | Rank | Country | Observation |
 |------|----------|--------------|
