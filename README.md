@@ -148,13 +148,6 @@ Install dependencies via:
 
 ```bash
 pip install -r requirements.txt
-Main libraries:
-
-pandas, numpy — data analysis
-
-matplotlib, seaborn — visualizations
-
-scipy — statistical testing
 
 How to Run
 Open the notebook:
